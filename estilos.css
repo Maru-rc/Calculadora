@@ -14,6 +14,13 @@ body{
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
 }
 
+.contenedor1, .contenedor2, .contenedor3, .contenedor4{
+    background-color: #34495e;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 28px;
+}
 
 .pantalla{
     width: 90%;
@@ -71,11 +78,11 @@ button.resultado{
     grid-column: span 2;
 }
 
-button.cero{
+button.cero, .punto{
     width: 100%;
     grid-column: span 2 ;
 }
 
-.punto , .porcentaje{
+.punto {
     background-color: #446a6d;
 }

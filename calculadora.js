@@ -1,36 +1,56 @@
 const botones = document.querySelectorAll("button");
-const pantalla = document.querySelector(".pantalla");
-let operacion = " ";
-let resetPantalla = false
+const contenedor1 = document.querySelector(".contenedor1");
+const contenedor2 = document.querySelector(".contenedor2");
+const contenedor3 = document.querySelector(".contenedor3");
+const contenedor4 = document.querySelector(".contenedor4");
 
-botones.forEach(boton=>{
-    boton.addEventListener("click",()=>{
-        const textoBoton = boton.textContent;
+let SegundoNumero = false;
 
-        if (textoBoton ==="C"){
-            operacion= " ";
-            pantalla.value="0";
-        } else if (textoBoton === "="){
-            try{
-                operacion=eval(operacion);
-                pantalla.value=operacion;
-            } catch (error){
-                pantalla.value ="Error";
-                operacion = " ";
-            }
-        } else if (textoBoton === "%"){
-            if (operacion) {
-                operacion =  String(eval(operacion+"/100"));
-                pantalla.value=operacion;
-            }
-        }else{
-            if (resetPantalla && !isNaN(textoBoton)){
-                operacion = textoBoton;
-                resetPantalla = false;
-            }else{
-                operacion += textoBoton;
-            }
-            pantalla.value = operacion; 
+botones.forEach(boton => {
+    boton.addEventListener("click", () => {
+        const valor = boton.textContent;
+
+        if (boton.id === "clear") {
+            contenedor1.value = "";
+            contenedor2.value = "";
+            contenedor3.value = "";
+            contenedor4.value = "";
+            SegundoNumero = false;
+            return;
         }
-    })
-})
+
+        if (boton.classList.contains("resultado")) {
+            const n1 = parseFloat(contenedor1.value);
+            const n2 = parseFloat(contenedor3.value);
+            const op = contenedor2.value;
+            let final = 0;
+
+            if (op === "+") final = n1 + n2;
+            if (op === "-") final = n1 - n2;
+            if (op === "*") final = n1 * n2;
+            if (op === "/") {
+                if (n2 === 0) {
+                    final = "Error";
+                } else {
+                    final = n1 / n2;
+                 }
+}
+            contenedor4.value = final;
+            return;
+        }
+
+        if (boton.classList.contains("funcion")) {
+            if (contenedor1.value !== "") {
+                contenedor2.value = valor;
+                SegundoNumero = true;
+            }
+            return;
+        }
+
+        if (!SegundoNumero) {
+            contenedor1.value += valor;
+        } else {
+            contenedor3.value += valor;
+        }
+    });
+});
