@@ -21,21 +21,21 @@ botones.forEach(boton => {
 
         if (boton.classList.contains("resultado")) {
             const n1 = parseFloat(contenedor1.value);
-            const n2 = parseFloat(contenedor3.value);
             const op = contenedor2.value;
-            let final = 0;
+            const n2 = parseFloat(contenedor3.value);
+            let resultado_operacion = 0;
 
-            if (op === "+") final = n1 + n2;
-            if (op === "-") final = n1 - n2;
-            if (op === "*") final = n1 * n2;
+            if (op === "+") resultado_operacion = n1 + n2;
+            if (op === "-") resultado_operacion = n1 - n2;
+            if (op === "*") resultado_operacion = n1 * n2;
             if (op === "/") {
                 if (n2 === 0) {
-                    final = "Error";
+                    resultado_operacion = "Error";
                 } else {
-                    final = n1 / n2;
+                    resultado_operacion = n1 / n2;
                  }
 }
-            contenedor4.value = final;
+            contenedor4.value = resultado_operacion;
             return;
         }
 
