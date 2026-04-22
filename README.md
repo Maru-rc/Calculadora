@@ -1,5 +1,5 @@
 # Calculadora
 
-## integrantes del grupo:
+# integrantes del grupo:
 -Manuel Rueda
 -Diego Gonzales
